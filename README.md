@@ -14,10 +14,50 @@ npm i
 3. Run JSON Server with the command:
 
 ```
-npm start
+npm run start-auth
 ```
 
-4. You can now access the data via the REST API. For example:
+4. You can now access the data via the REST API.  
+> JSON Server is running on http://localhost:3000  
+ 
+### For example:
+
+**Registration:**
+
+```
+POST http://localhost:3000/auth/registration
+Request body and Response: 
+{
+    "email": "chipkmchip@gmail.com",
+    "password": 1111,
+    "firstName": "Drob",
+    "lastName": "Palchyn",
+    "dateOfBirth": "4/5/1985, 12:00:00 AM",
+    "gender": "male",
+    "countryCode": "+3",
+    "phone": "3056785",
+    "citizenship": "Ukraine"
+}
+```
+
+**Login:**
+
+```
+POST http://localhost:3000/auth/registration
+Request body: 
+{
+    "email": "chipkmchip@gmail.com",
+    "password": 1111,
+}
+
+Response:
+{
+  "token": "XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXX.XXXXXXXXX"
+}
+```
+---
+>You should add Authorization header with token in your GET requests:  
+>`Authorization: Bearer XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXX.XXXXXXXXX`
 
 **Get list of all airports:**
 
