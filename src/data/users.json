@@ -1,0 +1,13 @@
+[
+  {
+    "email": "vvpalchyn@gmail.com",
+    "password": 1111,
+    "firstName": "Volodymyr",
+    "lastName": "Palchyn",
+    "dateOfBirth": "4/5/1985, 12:00:00 AM",
+    "gender": "male",
+    "countryCode": "67",
+    "phone": "3056785",
+    "citizenship": "345"
+  }
+]
