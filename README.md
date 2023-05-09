@@ -43,7 +43,7 @@ Request body and Response:
 **Login:**
 
 ```
-POST http://localhost:3000/auth/registration
+POST http://localhost:3000/auth/login
 Request body: 
 {
     "email": "chipkmchip@gmail.com",
@@ -53,11 +53,20 @@ Request body:
 Response:
 {
   "token": "XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXX.XXXXXXXXX"
+  "user": {
+    "email": "chipkmchip@gmail.com",
+    "password": 1111,
+    "firstName": "Drob",
+    "lastName": "Palchyn",
+    "dateOfBirth": "4/5/1985, 12:00:00 AM",
+    "gender": "male",
+    "countryCode": "+3",
+    "phone": "3056785",
+    "citizenship": "Ukraine"
+  }
 }
 ```
 ---
->You should add Authorization header with token in your GET requests:  
->`Authorization: Bearer XXXXXXXXXXXXX.XXXXXXXXXXXXXXXXXXXXX.XXXXXXXXX`
 
 **Get list of all airports:**
 
