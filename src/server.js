@@ -28,13 +28,19 @@ function verifyToken(token) {
   })
 }
 
-function isAuthenticated({ email, password }) {
+function getUser(email, password) {
+  return userDb.find(user => user.email === email && user.password === password)
+}
+
+function isAuthenticated(email, password ) {
   return userDb.findIndex(user => user.email === email && user.password === password) !== -1
 }
 
 server.post('/auth/login', (req, res) => {
   const { email, password } = req.body
-  if (isAuthenticated({ email, password }) === false) {
+  const user = getUser(email, password)
+
+  if (!user) {
     res.status(401).json({
       status: '401 - Login error',
       message: 'Incorrect email or password!',
@@ -42,12 +48,14 @@ server.post('/auth/login', (req, res) => {
     return
   }
   const token = createToken({ email, password })
-  res.status(200).json({ token })
+  res.status(200).json({ token, user })
 })
 
 server.post('/auth/registration', (req, res) => {
   const { email, password } = req.body
-  if (isAuthenticated({ email, password }) === true) {
+  const isAuthenticated = !!getUser(email, password)
+
+  if (isAuthenticated) {
     res.status(400).json({
       status: '400 - Register error',
       message: 'User already exists!',
@@ -57,22 +65,6 @@ server.post('/auth/registration', (req, res) => {
   const newUser = { ...req.body }
   userDb.push(newUser)
   res.status(200).json(newUser)
-})
-
-server.use(/^(?!\/auth).*$/, (req, res, next) => {
-  try {
-    const [, token] = req.headers.authorization.split(' ')
-    if (!token) {
-      throw new Error()
-    }
-    verifyToken(token)
-    next()
-  } catch (err) {
-    res.status(401).json({
-      status: '401 - Access error',
-      message: 'You must be log in before access this page!',
-    })
-  }
 })
 
 server.use(router)
