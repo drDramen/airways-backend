@@ -25,7 +25,7 @@ const generateFlights = (count) => {
       toAirport = airports[randomUpTo(airports.length)]
     }
 
-    for (let j = 1; j < 5; j++) {
+    for (let j = 1; j < 10; j++) {
       const takeoffDate = new Date(Date.now() + Math.floor(Math.random() * MILLISECONDS_IN_DAY * DAYS_IN_MONTH))
       const landingDate = new Date(takeoffDate.getTime() + Math.floor(Math.random() * MILLISECONDS_IN_DAY))
       const takeoffDateTo = new Date(takeoffDate.getTime() + MILLISECONDS_IN_DAY * DAY_OFFSET)
