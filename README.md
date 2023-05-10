@@ -73,6 +73,11 @@ Response:
 ```
 GET http://localhost:3000/airports
 ```
+**Get list of all phone codes:**
+
+```
+GET http://localhost:3000/phone-codes
+```
 
 **Get list of all flights:**
 
