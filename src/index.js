@@ -5,7 +5,7 @@ const { generateFlights } = require('./utils/generateData')
 module.exports = () => {
   return {
     airports: airports,
-    flights: generateFlights(1000),
+    flights: generateFlights(30),
     'phone-codes': phoneCodes
   }
 }
