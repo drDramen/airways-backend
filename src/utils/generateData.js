@@ -40,8 +40,8 @@ function generateFlight(from, to, date, flightNumber) {
   return {
     from: from,
     to: to,
-    takeoffDate: takeoffDate.toLocaleString(),
-    landingDate: landingDate.toLocaleString(),
+    takeoffDate: takeoffDate.toISOString(),
+    landingDate: landingDate.toISOString(),
     timeMins: timeMins,
     available: generateAvailableSeats(),
     price: generatePrices(),
